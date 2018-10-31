@@ -19,9 +19,9 @@ class IFID_IO extends Bundle {
 class IFID extends Module {
     val io=IO(new IFID_IO())
 
-    val r1=RegNext(io.from_pc.pc)
+    val r1=RegNext(io.from_pc.pc, 0.U(32.W))
     io.to_id.pc:=r1
 
-    val r2=RegNext(io.inst)
+    val r2=RegNext(io.inst, 0.U(32.W))
     io.to_id.inst:=r2
 }

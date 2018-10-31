@@ -51,7 +51,15 @@ module IFID( // @[:@3.2]
   end
 `endif // RANDOMIZE
   always @(posedge clock) begin
-    r1 <= io_from_pc_pc;
-    r2 <= io_inst;
+    if (reset) begin
+      r1 <= 32'h0;
+    end else begin
+      r1 <= io_from_pc_pc;
+    end
+    if (reset) begin
+      r2 <= 32'h0;
+    end else begin
+      r2 <= io_inst;
+    end
   end
 endmodule
