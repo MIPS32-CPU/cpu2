@@ -3,8 +3,13 @@
 import chisel3._
 
 
+class PC_TO_IFID extends Bundle {
+    val pc=Output(UInt(32.W))
+}
+
+
 class PC_IO extends Bundle {
-    val pc_o=Output(UInt(32.W))
+    val to_ifid=new PC_TO_IFID()
 }
 
 
@@ -14,5 +19,5 @@ class PC extends Module {
     when(true.B) {
         r:=r+4.U
     }
-    io.pc_o:=r
+    io.to_ifid.pc:=r
 }
