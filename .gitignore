@@ -1,0 +1,5 @@
+*.json
+*.fir
+/.idea
+/project
+/target
