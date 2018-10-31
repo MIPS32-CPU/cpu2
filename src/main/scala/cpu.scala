@@ -17,5 +17,12 @@ object CPU {
         chisel3.Driver.execute(args, () => new CPU)
         chisel3.Driver.execute(args, () => new PC)
         chisel3.Driver.execute(args, () => new IFID)
+        chisel3.Driver.execute(args, () => new ID)
+        chisel3.Driver.execute(args, () => new IDEX)
+        chisel3.Driver.execute(args, () => new EX)
+        chisel3.Driver.execute(args, () => new EXMEM)
+        chisel3.Driver.execute(args, () => new MEM)
+        chisel3.Driver.execute(args, () => new MEMWB)
+        chisel3.Driver.execute(args, () => new REGS)
     }
 }
