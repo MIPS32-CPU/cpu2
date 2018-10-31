@@ -28,29 +28,27 @@ class REGS extends Module {
     }
 
     // read register 1
-    val r1=RegInit(0.U(32.W))
+    io.to_id.data1:=RegInit(0.U(32.W))
     when(io.from_id.readEnable1===false.B) {
-        r1:=0.U
+        io.to_id.data1:=0.U
     }.elsewhen(io.from_id.readAddr1===0.U(5.W)) {
-        r1:=0.U
+        io.to_id.data1:=0.U
     }.elsewhen(io.from_memwb.writeEnable && io.from_id.readAddr1===io.from_memwb.writeAddr) {
-        r1:=io.from_memwb.writeData
+        io.to_id.data1:=io.from_memwb.writeData
     }.otherwise {
-        r1:=register(io.from_id.readAddr1)
+        io.to_id.data1:=register(io.from_id.readAddr1)
     }
-    io.to_id.data1:=r1
 
     // read register 2
-    val r2=RegInit(0.U(32.W))
+    io.to_id.data2:=RegInit(0.U(32.W))
     when(io.from_id.readEnable2===false.B) {
-        r2:=0.U
+        io.to_id.data2:=0.U
     }.elsewhen(io.from_id.readAddr2===0.U(5.W)) {
-        r2:=0.U
+        io.to_id.data2:=0.U
     }.elsewhen(io.from_memwb.writeEnable && io.from_id.readAddr2===io.from_memwb.writeAddr) {
-        r2:=io.from_memwb.writeData
+        io.to_id.data2:=io.from_memwb.writeData
     }.otherwise {
-        r2:=register(io.from_id.readAddr2)
+        io.to_id.data2:=register(io.from_id.readAddr2)
     }
-    io.to_id.data2:=r2
 
 }
