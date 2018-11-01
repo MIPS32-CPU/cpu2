@@ -6,7 +6,6 @@ import chisel3._
 class CPU_IO extends Bundle {
     val rom_data=Input(UInt(32.W))
     val rom_addr=Output(UInt(32.W))
-    val asdasd=Output(UInt(32.W))
 }
 
 
@@ -36,22 +35,22 @@ class CPU extends Module {
 
     ifid.io.inst:=io.rom_data
     io.rom_addr:=pc.io.to_ifid.pc
-    io.asdasd:=memwb.io.to_regs.writeData
 
 }
 
 
 object CPU {
     def main(args: Array[String]): Unit = {
-        chisel3.Driver.execute(args, () => new CPU)
-//        chisel3.Driver.execute(args, () => new PC)
-//        chisel3.Driver.execute(args, () => new IFID)
-//        chisel3.Driver.execute(args, () => new ID)
-//        chisel3.Driver.execute(args, () => new IDEX)
-//        chisel3.Driver.execute(args, () => new EX)
-//        chisel3.Driver.execute(args, () => new EXMEM)
-//        chisel3.Driver.execute(args, () => new MEM)
-//        chisel3.Driver.execute(args, () => new MEMWB)
-//        chisel3.Driver.execute(args, () => new REGS)
+        val s=Array("--target-dir","verilog","--no-dce")
+        chisel3.Driver.execute(s, () => new CPU)
+//        chisel3.Driver.execute(s, () => new PC)
+//        chisel3.Driver.execute(s, () => new IFID)
+//        chisel3.Driver.execute(s, () => new ID)
+//        chisel3.Driver.execute(s, () => new IDEX)
+//        chisel3.Driver.execute(s, () => new EX)
+//        chisel3.Driver.execute(s, () => new EXMEM)
+//        chisel3.Driver.execute(s, () => new MEM)
+//        chisel3.Driver.execute(s, () => new MEMWB)
+//        chisel3.Driver.execute(s, () => new REGS)
     }
 }
