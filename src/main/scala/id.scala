@@ -36,7 +36,7 @@ class ID extends Module {
     val rt=inst(20,16)
     val rd=inst(15,11)
 
-    val imm=RegInit(0.U(32.W))
+    val imm=WireInit(0.U(32.W))
 
     io.to_regs.readEnable1:=RegInit(false.B)
     io.to_regs.readEnable2:=RegInit(false.B)
@@ -66,7 +66,7 @@ class ID extends Module {
     }
 
 
-    when(io.from_ifid.inst===Global.ORI) {
+    when(inst===Global.ORI) {
         io.to_regs.readEnable1:=true.B
         io.to_regs.readAddr1:=rs
         imm:=inst(15,0)
