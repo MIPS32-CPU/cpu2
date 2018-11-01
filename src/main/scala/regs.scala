@@ -22,9 +22,8 @@ class REGS extends Module {
     val register=Mem(32,UInt(32.W))
 
     // write to registers
-    val r0=RegNext(io.from_memwb.writeData, 0.U(32.W))
     when(io.from_memwb.writeEnable===true.B && io.from_memwb.writeAddr=/=0.U(5.W)) {
-        register(io.from_memwb.writeAddr):=r0
+        register(io.from_memwb.writeAddr):=io.from_memwb.writeData
     }
 
     // read register 1
