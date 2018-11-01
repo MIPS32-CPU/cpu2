@@ -27,7 +27,7 @@ class REGS extends Module {
     }
 
     // read register 1
-    io.to_id.data1:=RegInit(0.U(32.W))
+    io.to_id.data1:=WireInit(0.U(32.W))
     when(io.from_id.readEnable1===false.B) {
         io.to_id.data1:=0.U
     }.elsewhen(io.from_id.readAddr1===0.U(5.W)) {
@@ -39,7 +39,7 @@ class REGS extends Module {
     }
 
     // read register 2
-    io.to_id.data2:=RegInit(0.U(32.W))
+    io.to_id.data2:=WireInit(0.U(32.W))
     when(io.from_id.readEnable2===false.B) {
         io.to_id.data2:=0.U
     }.elsewhen(io.from_id.readAddr2===0.U(5.W)) {

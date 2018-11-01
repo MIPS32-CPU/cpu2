@@ -33,6 +33,10 @@ class CPU extends Module {
     mem.io.to_memwb<>memwb.io.from_mem
     memwb.io.to_regs<>regs.io.from_memwb
 
+    // datapath
+    ex.io.to_exmem<> id.io.from_ex
+    mem.io.to_memwb<>id.io.from_mem
+
     ifid.io.inst:=io.rom_data
     io.rom_addr:=pc.io.to_ifid.pc
 
